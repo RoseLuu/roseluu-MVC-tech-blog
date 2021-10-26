@@ -1,0 +1,12 @@
+[
+    {
+        "user_comment": "Great explain",
+        "user_id": 2,
+        "post_id": 1
+    },
+    {
+        "user_comment": "I think MVC will help the code clear",
+        "user_id": 3,
+        "post_id": 1
+    }
+]

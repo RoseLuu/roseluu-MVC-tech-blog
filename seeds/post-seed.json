@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Why MVC is important?",
+        "content": "MVC is important to understand because it is the basic structure which most web applications are built on. The same is also true for mobile apps and desktop programs.",
+        "user_id": 1
+    },
+    {
+        "title": "MySQL",
+        "content": "MySQL is a relational database management system based on SQL – Structured Query Language. The application is used for a wide range of purposes, including data warehousing, e-commerce, and logging applications.",
+        "user_id": 2
+    },
+    {
+        "title": "API",
+        "content": "API is the acronym for Application Programming Interface, which is a software intermediary that allows two applications to talk to each other. Each time you use an app like Facebook, send an instant message, or check the weather on your phone, you're using an API.",
+        "user_id": 2
+    }
+]

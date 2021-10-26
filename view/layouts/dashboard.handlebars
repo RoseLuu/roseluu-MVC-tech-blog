@@ -13,7 +13,7 @@
 <body>
     <header class='col-12'>
         <h1>
-            <span><a href='/'>The Tech Blog</a></span>
+            <span><a href='/dashboard'>Your Dashboard</a></span>
         </h1>
         <nav aria-label="breadcrumb">
             <ul>
@@ -30,8 +30,8 @@
     <main class="container container-fluid">
       {{{ body }}}
     </main>
-    <footer>
-      Thank you for visit!
+    <footer class='justify-center'> 
+      <button type='submit'><a href='/dashboard/new'>Add Post</a></button>
     </footer>
   </div>
 {{#if logged_in}}
