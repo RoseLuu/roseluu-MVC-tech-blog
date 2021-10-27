@@ -1,15 +1,15 @@
 const router =require('express').Router();
 const {User, Post, Comment} =require('../models/');
-// const withAuth=require('../../utils/auth');
+const withAuth=require('../utils/auth');
 
 router.get('/', async(req, res)=>{
     try{
         const postData= await Post.findAll({
-            attributes: ['id', 'title', 'content', 'create_at'
+            attributes: ['id', 'title', 'content', 'created_at'
             ],
             include: [{
                 model: Comment,
-                attributes:[ 'id', 'user_comment', 'user_id', 'post_id', 'create_at'],
+                attributes:[ 'id', 'user_comment', 'user_id', 'post_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -19,22 +19,24 @@ router.get('/', async(req, res)=>{
             model: User,
             attributes: ['username']
             }]
-        }); const posts = postData.map((post)=> post.get({plain: true}));
+        });
+        const posts = postData.map((post)=> post.get({plain: true}));
         res.render('homepage', {
             posts,
             logged_in: req.session.logged_in
         });
     }catch(err) {
         res.status(500).json(err);
+        
     }
 });
 router.get('/post/:id', withAuth, async (req, res) =>{
     try {
         const postData =await Post.findByPk(req.params.id, {
-            attributes:['id', 'title', 'content', 'create_at'],
+            attributes:['id', 'title', 'content', 'created_at'],
             include:[{
                 model: Comment,
-                attributes: ['id', 'user_comment', 'user_id', 'post_id', 'create_at'],
+                attributes: ['id', 'user_comment', 'user_id', 'post_id', 'created_at'],
                 include:{
                     model: User,
                     attributes: ['username']
