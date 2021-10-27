@@ -8,11 +8,11 @@ router.get('/', withAuth, async(req, res)=>{
             where: {
                 user_id: req.session.user_id
             },
-            attributes: ['id', 'title', 'content', 'create_at'
+            attributes: ['id', 'title', 'content', 'created_at'
             ],
             include: [{
                 model: Comment,
-                attributes:[ 'id', 'user_comment', 'user_id', 'post_id', 'create_at'],
+                attributes:[ 'id', 'user_comment', 'user_id', 'post_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -34,10 +34,10 @@ router.get('/', withAuth, async(req, res)=>{
 router.get('/edit/:id', withAuth, async (req, res) =>{
     try {
         const postData =await Post.findByPk(req.params.id, {
-            attributes:['id', 'title', 'content', 'create_at'],
+            attributes:['id', 'title', 'content', 'created_at'],
             include:[{
                 model: Comment,
-                attributes: ['id', 'user_comment', 'user_id', 'post_id', 'create_at'],
+                attributes: ['id', 'user_comment', 'user_id', 'post_id', 'created_at'],
                 include:{
                     model: User,
                     attributes: ['username']
@@ -48,7 +48,8 @@ router.get('/edit/:id', withAuth, async (req, res) =>{
             attributes:['username']
         }]
         }); const post= postData.get({plain: true});
-        res.render('edit', {
+        res.render('edit-post', {
+            layout:'dashboard',
             post,
             logged_in:req.session.logged_in
         });
@@ -57,7 +58,7 @@ router.get('/edit/:id', withAuth, async (req, res) =>{
     }
 })
 router.get('/new', (req,res)=>{
-    res.render('new-post');
+    res.render('add-post');
 })
 
 module.exports =router;
