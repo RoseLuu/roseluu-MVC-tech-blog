@@ -25,15 +25,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
-                {{#if logged_in}}
                 <li class="nav-item">
                   <a class="nav-link" href="/" id='logout'>Logout</a>
                 </li>
-                {{else}}
-                <li class="nav-item">
-                  <a class="nav-link" href="/login">Login</a>
-                </li>
-                {{/if}}
               </ul>
             </div>
           </nav>
@@ -41,7 +35,7 @@
     <main class="container container-fluid">
       {{{ body }}}
     </main>
-    <footer class='justify-center m-5'> 
+    <footer class="fixed-bottom"> 
       <button type='submit'><a href='/dashboard/new'>Add Post</a></button>
     </footer>
   </div>
