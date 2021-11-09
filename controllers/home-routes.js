@@ -28,7 +28,11 @@ router.get("/", async (req, res) => {
       ],
     });
     const posts = postData.map((post) => post.get({ plain: true }));
-    res.render("homepage", { posts });
+    console.log(posts);
+    res.render("homepage", {
+      layout: "dashboard",
+      posts,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -58,8 +62,12 @@ router.get("/post/:id", withAuth, async (req, res) => {
         },
       ],
     });
-    const post = postData.get({ plain: true });
-    res.render("homepage-one-post", { post });
+    if (postData) {
+      const post = postData.get({ plain: true });
+      res.render("homepage-one-post", { post });
+    } else {
+      res.status(404).end();
+    }
   } catch (err) {
     res.status(500).json(err);
   }

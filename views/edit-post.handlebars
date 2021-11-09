@@ -10,15 +10,11 @@
       type="text"
       name="post-title"
       class="form-input"
-      placeholder="{{post.title}}"
+      value="{{post.title}}"
     />
 
     <label class="form-label" for="content">Content</label>
-    <textarea
-      name="content"
-      class="form-input"
-      placeholder="{{post.content}}"
-    ></textarea>
+    <textarea name="content" class="form-input">{{post.body}}</textarea>
 
     <button
       type="submit"
@@ -28,4 +24,4 @@
   </form>
 </div>
 
-<script src="../public/js/edit.js"></script>
+<script src="/js/edit.js"></script>
