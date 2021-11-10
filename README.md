@@ -13,6 +13,8 @@
 
 # Deploy link :
 
+[visit page](https://dry-sands-54611.herokuapp.com/)
+
 # Description
 
 This project will build the back-end for E-commerce page. Using sequelize to interact with SQL database.
