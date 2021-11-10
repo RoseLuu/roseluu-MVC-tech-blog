@@ -1,7 +1,7 @@
 const newFormHandler = async function (event) {
   event.preventDefault();
 
-  const title = document.querySelector("#post-title").value;
+  const title = document.querySelector(`#post-title`).value;
   const content = document.querySelector("#post-content").value;
 
   const response = await fetch(`/api/posts`, {
@@ -14,10 +14,11 @@ const newFormHandler = async function (event) {
       "Content-Type": "application/json",
     },
   });
-  if (response.ok) {
+  await console.log(response.body);
+  if (await response.ok) {
     document.location.replace("/dashboard");
   } else {
-    alert(response.statusText);
+    alert("hello there 2");
   }
 };
 document

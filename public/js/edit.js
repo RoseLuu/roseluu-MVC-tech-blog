@@ -6,7 +6,7 @@ const editFormHandler = async function (event) {
   const title = document.querySelector("#title").value;
   const content = document.querySelector("#content").value;
 
-  const response = await fetch(`/api/posts`, {
+  const response = await fetch(`/api/posts/${postId}`, {
     method: "PUT",
     body: JSON.stringify({
       title,
@@ -23,7 +23,7 @@ const editFormHandler = async function (event) {
   }
 };
 const deleteHandler = async () => {
-  await fetch(`/api/post/${postId}`, {
+  await fetch(`/api/posts/${postId}`, {
     method: "DELETE",
   });
   document.location.replace("/dashboard");
