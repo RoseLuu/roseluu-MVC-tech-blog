@@ -4,29 +4,29 @@
       <h2>{{post.title}}</h2>
       <div>
         Posted by
-        {{post.User.username}}
+        {{post.user.username}}
         on
-        {{format_date post.createdAt}}
+        {{format_date post.created_at}}
       </div>
     </div>
     <div class="card-body">
       {{post.content}}
     </div>
   </article>
-  {{#if post.Comments}}
+  {{#if post.comments}}
     <section class="card">
       <div class="card-header">
         <h3>Comments</h3>
       </div>
       <div class="card-body">
-        {{#each post.Comments}}
+        {{#each post.comments}}
           <div>
             <p>
               {{user_comment}}
             </p>
             <p>
               -{{user.username}},
-              {{format_date createdAt}}
+              {{format_date created_at}}
             </p>
           </div>
         {{/each}}
@@ -40,11 +40,15 @@
     </div>
 
     <div class="card-body">
-      <input type="hidden" name="post-id" value="{{post.id}}" />
+      <input type="hidden" name="post-id" id="post-id" value="{{post.id}}" />
 
       <label class="form-label" for="comment-body">Comment</label>
 
-      <textarea name="comment-body" class="form-input"></textarea>
+      <textarea
+        name="comment-body"
+        id="comment-input"
+        class="form-input"
+      ></textarea>
 
       <button type="submit" class="btn">Submit</button>
     </div>

@@ -9,13 +9,22 @@
     <input
       type="text"
       name="post-title"
+      id="title"
       class="form-input"
       value="{{post.title}}"
     />
 
     <label class="form-label" for="content">Content</label>
-    <textarea name="content" class="form-input">{{post.body}}</textarea>
-
+    <textarea
+      name="content"
+      id="content"
+      class="form-input"
+    >{{post.content}}</textarea>
+    <button
+      type="submit"
+      class="btn btn-lg btn-info mb-3"
+      id="edit-btn"
+    >Edit</button>
     <button
       type="submit"
       class="btn btn-lg btn-info mb-3"
