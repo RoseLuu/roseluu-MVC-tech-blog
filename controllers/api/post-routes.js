@@ -13,23 +13,23 @@ router.get("/", async (req, res) => {
     res.status(500).json("there is an error here" + err);
   }
 });
-// //get one post
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const postData = await Post.findByPk(req.params.id, {
-//       include: [{ model: User, attributes: ["username"] }, { model: Comment }],
-//     });
-//     if (!postData) {
-//       res.status(404).json({ message: "No post match with the id" });
-//       return;
-//     }
-//     res.status(200).json(postData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+//get one post
+router.get("/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{ model: User, attributes: ["username"] }, { model: Comment }],
+    });
+    if (!postData) {
+      res.status(404).json({ message: "No post match with the id" });
+      return;
+    }
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 //create a post
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       title: req.body.title,
